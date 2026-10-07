@@ -335,7 +335,8 @@ function detail(slug){const x=t(),i=projects.findIndex(p=>p.slug===slug);if(i<0)
 /* ---------- ROUTER ---------- */
 let pendingScroll=null;
 let path=(location.hash||'').replace(/^#\/?/,'');
-function go(p){path=p;try{history.replaceState(null,'','#/'+p)}catch(e){try{location.hash='#/'+p}catch(_){}}route()}
+/* each page change is a history entry; the scroll position is saved so Back returns to the same spot */
+function go(p){if(p!==path){try{history.replaceState({y:window.scrollY},'');history.pushState({y:0},'','#/'+p)}catch(e){try{location.hash='#/'+p}catch(_){}}}path=p;route()}
 function route(){const h=path,parts=h.split('/'),x=t();
  document.documentElement.lang=lang;document.title='TRI-PIX — '+x.hero;
  let v,cur='';
@@ -399,7 +400,9 @@ document.addEventListener('click',e=>{
  const lk=e.target.closest('a[href^="#/"]');
  if(lk){e.preventDefault();$('#nav').classList.remove('open');$('#menu').setAttribute('aria-expanded','false');go(lk.getAttribute('href').replace(/^#\/?/,''))}
 });
-window.addEventListener('hashchange',()=>{path=(location.hash||'').replace(/^#\/?/,'');route()});
+try{history.scrollRestoration='manual'}catch(e){}
+window.addEventListener('popstate',e=>{path=(location.hash||'').replace(/^#\/?/,'');route();const y=e.state&&e.state.y;if(y)requestAnimationFrame(()=>window.scrollTo({top:y,behavior:'instant'}))});
+window.addEventListener('hashchange',()=>{const p=(location.hash||'').replace(/^#\/?/,'');if(p!==path){path=p;route()}});
 route();
 </script>
 </body>
