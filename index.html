@@ -3,10 +3,18 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Дмитрий Голыбдин — 3D визуализация</title>
-<meta name="description" content="Портфолио 3D artist: архитектурная визуализация, интерьеры, CGI.">
-<meta property="og:title" content="Dmitry Golybdin — 3D Visualization">
+<title>TRI-PIX — весь визуал бренда в одних руках</title>
+<meta name="description" content="Студия визуала: 3D-визуализация, сайты и айдентика, видеомонтаж. Один контакт и единый подход для всего бренда.">
+<meta property="og:title" content="TRI-PIX — весь визуал бренда в одних руках">
+<meta property="og:description" content="Студия визуала: 3D-визуализация, сайты и айдентика, видеомонтаж. Один контакт и единый подход для всего бренда.">
+<meta property="og:site_name" content="TRI-PIX">
+<meta property="og:url" content="https://tri-pix.github.io/">
+<meta property="og:image" content="https://tri-pix.github.io/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="ru_RU">
 <meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preload" href="fonts/onest-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
 <style>
 @font-face{font-family:'Onest';font-style:normal;font-weight:300 600;font-display:swap;src:url(fonts/onest-cyrillic-ext.woff2) format('woff2');unicode-range:U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F}
@@ -318,7 +326,7 @@ function gallery(imgs,title){const out=[];let i=0,k=0;while(i<imgs.length){const
 function detail(slug){const x=t(),i=projects.findIndex(p=>p.slug===slug);if(i<0)return `<div class="pg-h"><h1>404</h1></div><p class="back"><a href="#/projects">${x.back}</a></p>`;
  const p=projects[i],pr=projects[(i-1+projects.length)%projects.length],nx=projects[(i+1)%projects.length];
  const meta=[['year',p.year],['client',p.client],['loc',p.location]].filter(m=>m[1]).map(m=>`<p>${x[m[0]]}: ${m[1]}</p>`).join('');
- document.title=`${p.title[lang]} — ${x.suf} | ${lang==='ru'?'Дмитрий Голыбдин':'Dmitry Golybdin'}`;
+ document.title=`${p.title[lang]} — ${x.suf} | TRI-PIX`;
  return crumbs([[x.tt,'#/projects'],[p.title[lang]]])+`<article><header class="pd-h" style="position:static;backdrop-filter:none;background:none;padding-top:clamp(40px,7vw,110px)"><div class="t"><h1>${p.title[lang]}</h1><div class="ty">${x.cat[p.category]}</div></div><div class="d">${meta}${p.description[lang]?`<p>${p.description[lang]}</p>`:''}</div></header>
  <div class="gal">${gallery(p.images,p.title[lang])}</div></article>
  <nav class="pn" aria-label="Projects"><a href="#/projects/${pr.slug}"><small>← ${x.prev}</small>${pr.title[lang]}</a><a class="nx" href="#/projects/${nx.slug}"><small>${x.next} →</small>${nx.title[lang]}</a></nav>
@@ -329,7 +337,7 @@ let pendingScroll=null;
 let path=(location.hash||'').replace(/^#\/?/,'');
 function go(p){path=p;try{history.replaceState(null,'','#/'+p)}catch(e){try{location.hash='#/'+p}catch(_){}}route()}
 function route(){const h=path,parts=h.split('/'),x=t();
- document.documentElement.lang=lang;document.title=x.brand+' — '+x.hero;
+ document.documentElement.lang=lang;document.title='TRI-PIX — '+x.hero;
  let v,cur='';
  if(parts[0]==='projects'&&parts[1]){v=detail(parts[1]);cur='projects'}
  else if(parts[0]==='projects'){v=list();cur='projects'}
