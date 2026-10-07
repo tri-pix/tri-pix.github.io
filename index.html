@@ -277,7 +277,7 @@ const projects=[
  {"slug":"ici-caldaie","title":{"ru":"Котёл ICI Caldaie","en":"ICI Caldaie Boiler"},"category":"prod","year":null,"client":"ICI Caldaie","location":null,"description":{"ru":"","en":""},"behance":"https://www.behance.net/gallery/241054497/ICI-Caldaie-Boiler","cover":"images/ici-caldaie/02.webp","images":[{"src":"images/ici-caldaie/01.webp","alt":"","ratio":0.429},{"src":"images/ici-caldaie/02.webp","alt":"","ratio":1}]}
 ];
 const featured=['hito','origana','iyun','iyun-mop','svoy','misty-forest-villa'];
-const CONTACT={email:'hello@example.com',telegram:'https://t.me/username',other:null}; // placeholders
+const CONTACT={email:'DmitryGolybdin@yandex.ru',phone:'+7 999 170-88-16',tel:'+79991708816',max:'https://max.ru/u/f9LHodD0cOJG_ueLEIzvEH8vk6XkfPMDL-659c0XpzpbFnNV7PDQvF4tEJE'};
 
 /* ---------- STATE ---------- */
 let lang='ru';
@@ -300,7 +300,7 @@ return `<section class="hero" aria-label="${x.hero}"><div class="hero-t"><h1>${x
 <section class="sec" id="services"><div class="sec-h"><h2>${x.nav.services}</h2></div><div class="srvl">${x.svc.map((s,i)=>`<button class="sv row" data-n="${i}"><span class="n">0${i+1}</span><span class="nm">${s[0]}</span><span class="ds">${s[2]}</span><span class="ar">→</span></button>`).join('')}</div></section>
 <section class="sec" id="team"><div class="sec-h"><h2>${x.nav.team}</h2></div><div class="tm">${x.team.map((m,i)=>`<div class="rv">${[PHD,PHO,PHV][i]?`<img class="tp" src="${[PHD,PHO,PHV][i]}" alt="${m[0]}" style="${i===1?'object-position:50% 40%':i===0?'object-position:50% 18%':''}">`:`<div class="ph" style="--r:1">${x.photo}</div>`}<h3>${m[0]}</h3><span>${m[1]}</span></div>`).join('')}</div></section>
 ${contact()}`}
-function contact(){const x=t(),c=CONTACT;return `<section class="contact" id="contact"><h2>${x.cH}</h2><p>${x.cP}</p><div class="links"><a href="mailto:${c.email}">${c.email}</a><a href="${c.telegram}" rel="noopener">Telegram</a>${c.other?`<a href="${c.other}">Behance</a>`:''}</div></section>`}
+function contact(){const x=t(),c=CONTACT;return `<section class="contact" id="contact"><h2>${x.cH}</h2><p>${x.cP}</p><div class="links"><a href="mailto:${c.email}">${c.email}</a><a href="tel:${c.tel}">${c.phone}</a><a href="${c.max}" target="_blank" rel="noopener">MAX ↗</a></div></section>`}
 const BR="assets/17.jpg";
 const PHD="assets/18.jpg";
 const PHO="assets/19.jpg";
